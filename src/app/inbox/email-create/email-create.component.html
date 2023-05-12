@@ -1,0 +1,13 @@
+<div class="container">
+  <button (click)="showModal = true" class="btn compose">Compose</button>
+</div>
+
+<app-modal (close)="showModal = false" *ngIf="showModal">
+  <h1 [modalTitle]>Compose</h1>
+  <!-- Providing the object for providing all the 
+   default values for the fields. -->
+  <app-email-form
+    (emailSubmit)="onSend($event)"
+    [email]="email"
+  ></app-email-form>
+</app-modal>

@@ -1,0 +1,19 @@
+<h1>Sign In With An Account</h1>
+<form (ngSubmit)="onSubmit()" class="form" [formGroup]="authForm">
+  <app-input label="Username" [control]="authForm.get('username')"></app-input>
+  <app-input
+    label="Password"
+    type="password"
+    [control]="authForm.get('password')"
+  ></app-input>
+  <div class="not-match" *ngIf="showErrors()">
+    <p *ngIf="authForm.errors.notFound">User Not Found</p>
+    <p *ngIf="authForm.errors.noConnection">
+      No Internet Connection, Please try again later
+    </p>
+    <p *ngIf="authForm.errors.unknownError">
+      Failed to SignIn, Please try again later
+    </p>
+  </div>
+  <button [disabled]="authForm.invalid" class="btn primary">Submit</button>
+</form>

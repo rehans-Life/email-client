@@ -1,0 +1,30 @@
+<h1>Create An Account</h1>
+<!-- Binding the form element to the form Group-->
+<form (ngSubmit)="onSubmit()" class="form" [formGroup]="authForm">
+  <!-- Binding the fields of the formGroup to the input 
+    elements  -->
+  <app-input
+    [label]="'Username'"
+    [control]="authForm.get('username')"
+  ></app-input>
+  <app-input
+    [label]="'Password'"
+    type="password"
+    [control]="authForm.get('password')"
+  ></app-input>
+  <app-input
+    type="password"
+    [label]="'Password Confirmation'"
+    [control]="authForm.get('passwordConfirmation')"
+  ></app-input>
+  <div class="not-match" *ngIf="showError()">
+    <p *ngIf="authForm.errors.passwordDontMatch">Passwords Dont Match</p>
+    <p *ngIf="authForm.errors.noConnection">
+      No Internet Connection, Please try again later
+    </p>
+    <p *ngIf="authForm.errors.unknowError">
+      Failed to SignIn, Please try again later
+    </p>
+  </div>
+  <button [disabled]="authForm.invalid" class="btn primary">Submit</button>
+</form>

@@ -1,0 +1,41 @@
+.container
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+
+    .main
+        height: calc( 100vh - 100px )
+
+    .header
+        display: flex
+        width: 100%
+        justify-content: space-between
+        align-items: center
+        font-size: 16px
+        border-bottom: 1px solid rgba(0,0,0,0.3)
+        padding: 6px 8px 12px 8px
+    .head
+        font-weight: 800
+        font-size: 18px
+
+    .right-menu
+        display: flex
+        align-items: center
+        column-gap: 2rem
+        .active
+            font-weight: bold
+            position: relative
+        .active::before
+            content: ""
+            width: 120%
+            padding: 1.2px
+            background: #333
+            position: absolute
+            bottom: -15.2px
+            right: -7px
+
+@media screen and (max-width: 800px)
+    .header
+        font-size: 13px
+        column-gap: 16px

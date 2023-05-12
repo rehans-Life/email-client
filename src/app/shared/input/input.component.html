@@ -1,0 +1,45 @@
+<div class="field">
+  <label>{{ label }}</label>
+  <input
+    *ngIf="controlType === 'input'"
+    [type]="type"
+    [formControl]="control"
+    [ngClass]="{ 'error-input': showErrors() }"
+  />
+
+  <textarea
+    *ngIf="controlType === 'textarea'"
+    rows="5"
+    [formControl]="control"
+    [ngClass]="{ 'error-input': showErrors() }"
+  ></textarea>
+
+  <ng-container *ngIf="showErrors()">
+    <div class="error" *ngIf="control.errors.required">
+      <p>{{ label }} is required</p>
+    </div>
+    <div class="error" *ngIf="control.errors.minlength">
+      <p>
+        {{ label }} should have more than
+        {{ control.errors.minlength.requiredLength }}
+        characters
+      </p>
+    </div>
+    <div class="error" *ngIf="control.errors.email">
+      <p>Email Required</p>
+    </div>
+    <div class="error" *ngIf="control.errors.maxlength">
+      <p>
+        {{ label }} shouldn't exceed
+        {{ control.errors.maxlength.requiredLength }}
+        characters
+      </p>
+    </div>
+    <div class="error" *ngIf="control.errors.pattern">
+      <p>{{ label }} shouldn't consist of any special characters</p>
+    </div>
+    <div class="error" *ngIf="control.errors.notAvailable">
+      <p>{{ label }} not available</p>
+    </div>
+  </ng-container>
+</div>

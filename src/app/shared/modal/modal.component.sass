@@ -1,0 +1,50 @@
+.dimmer
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: rgba(0,0,0,0.3)
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: 10
+    .modal
+        background: white
+        width: 70%
+        position: relative
+        border-radius: 3px
+        overflow: hidden
+        padding: 15px
+        display: flex
+        flex-direction: column
+        .header
+            font-size: 1.5rem
+            text-align: center
+        i
+            position: absolute
+            right: 12px
+            top: 20px
+            font-size: 1.5rem
+            cursor: pointer
+        .content
+            flex: 1
+        .actions
+            display: flex
+            justify-content: flex-end
+            align-items: center
+            width: 100%
+            column-gap: 1rem
+
+@media (max-width: 800px)
+    .header
+        font-size: 1.05rem !important
+
+.actions:empty
+    display: none
+
+.actions:empty + .actions-default
+    display: flex !important
+
+.actions-default
+    display: none !important
